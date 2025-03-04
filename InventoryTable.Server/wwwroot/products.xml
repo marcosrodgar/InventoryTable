@@ -1,0 +1,11 @@
+﻿<inventory>
+  <products>
+    <product name='table' price='29.99' qty='4'/>
+    <product name='chair' price='9.99' qty='7'/>
+    <product name='couch' price='50' qty='2'/>
+    <product name='pillow' price='5' qty='1'/>
+    <product name='bed' price='225.00' qty='1'/>
+    <product name='bench' price='29.99' qty='3'/>
+    <product name='stool' price='19.99' qty='5'/>
+  </products>
+</inventory>

@@ -1,0 +1,58 @@
+﻿#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+   
+}
+
+th, td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+th {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+   border: 1px solid #E5E8EC;        
+}
+
+tr.high-qty-row {
+    background: #f5bcb5;
+    border: 1px solid #DD3137;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+caption{
+    font-size: 14px;
+}
+
+.highlight-legend {
+    height: 12px;
+    width: 12px;
+    background: #f5bcb5;
+    border: 1px solid #DD3137;
+    margin-right: 4px;
+}
+
+.highlight-legend-container {
+    display: flex;
+    align-items: center;
+}
+
+.sort-icon{
+    width: 10px;
+    margin-left: 4px;
+}
