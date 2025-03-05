@@ -34,7 +34,7 @@ namespace InventoryTable.Server.Controllers
 
             if (products == null)
                 return Enumerable.Empty<Product>();
-        
+
 
             return sortParam.ToLower() switch
             {
@@ -56,16 +56,35 @@ namespace InventoryTable.Server.Controllers
 
             var xml = System.IO.File.ReadAllText(filePath);
             var xDoc = XDocument.Parse(xml);
-            return xDoc.Descendants("product")
-                .Select(p => new Product
+            var products = new List<Product>();
+
+            foreach (var p in xDoc.Descendants("product"))
+            {
+                try
                 {
-                    Name = (string)p.Attribute("name"),
-                    Price = (decimal)p.Attribute("price"),
-                    Quantity = (int)p.Attribute("qty")
-                })
-                .ToList();
+                    var name = (string)p.Attribute("name");
+                    var price = (decimal?)p.Attribute("price");
+                    var quantity = (int?)p.Attribute("qty");
+
+                    if (name == null || price == null || quantity == null)
+                    {
+                        throw new FormatException("Product is missing required attributes");
+                    }
+
+                    products.Add(new Product
+                    {
+                        Name = name,
+                        Price = price.Value,
+                        Quantity = quantity.Value
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Error parsing product from file: {p}");
+                }
+            }
+
+            return products;
         }
     }
-
-    
 }
